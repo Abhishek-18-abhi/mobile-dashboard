@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Mobile-first Dashboard</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="./output.css">
+</head>
+<body class="min-h-screen bg-base-100 text-base-content bg-blue-100">
+
+<!-- Navbar -->
+<header class="w-full shadow-sm bg-base-200 sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <button id="sidebarToggle" class="p-2 rounded-md">🍔</button>
+      <h1 class="text-lg font-semibold">My Dashboard</h1>
+    </div>
+    <div class="flex items-center gap-3">
+      <div class="avatar">
+        <div class="w-8 h-8 rounded-full bg-base-300 flex items-center justify-center">A</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Layout -->
+<div class="relative">
+  <!-- Sidebar (off-canvas on mobile) -->
+  <aside id="sidebar" class="fixed inset-y-0 left-0 z-40 w-64 transform -translate-x-full md:translate-x-0 transition-transform duration-200 bg-base-200 p-4" role="navigation" aria-label="Main navigation">
+    <div class="mb-4 flex items-center justify-between">
+      <div class="text-lg font-semibold">Menu</div>
+      <button id="closeSidebar" class="md:hidden p-1 rounded focus:outline-none" aria-label="Close navigation" >✕</button>
+    </div>
+
+    <nav class="bg-blue-400 text-white">
+      <ul class="space-y-1">
+        <li><a href="home.html" class="block p-2 rounded hover:bg-base-300 focus:outline-none focus:ring hover:bg-green-200 hover:text-black focus-visible:outline-2">Dashboard</a></li>
+        <li><a href="user.html" class="block p-2 rounded hover:bg-base-300 focus:outline-none focus:ring hover:bg-green-200 hover:text-black focus-visible:outline-2">Users</a></li>
+        <li><a href="report.html" class="block p-2 rounded hover:bg-base-300 focus:outline-none focus:ring hover:bg-green-200 hover:text-black focus-visible:outline-2">Reports</a></li>
+        <li><a href="login.html" class="block p-2 rounded hover:bg-base-300 focus:outline-none focus:ring  hover:bg-green-200 hover:text-black focus-visible:outline-2">Sign Out</a></li>
+      </ul>
+    </nav>
+  </aside>
+  <!-- backdrop for mobile when sidebar open -->
+  <div id="backdrop" class="hidden"></div>
+
+  <!-- Main content (pushes right on md+) -->
+  <main class="md:ml-64 p-4 min-h-screen">
+  <div class="max-w-6xl mx-auto">
+
+  <!-- header cards -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+  <section class="card p-4 shadow rounded bg-yellow-100  hover:bg-sky-200">
+  <header class="flex items-center justify-between mb-2">
+  <h2 class="text-sm font-medium">Users</h2>
+  <span class="text-xs opacity-60">Updated</span>
+  </header>
+  <div class="text-2xl font-bold">33</div>
+  </section>
+
+  <section class="card p-4 shadow rounded bg-yellow-100 hover:bg-sky-200">
+  <header class="flex items-center justify-between mb-2">
+  <h2 class="text-sm font-medium">Assignments</h2>
+  <span class="text-xs opacity-60">This month</span>
+  </header>
+  <div class="text-2xl font-bold">20</div>
+  </section>
+
+  <section class="card p-4 shadow rounded bg-yellow-100  hover:bg-sky-200">
+  <header class="flex items-center justify-between mb-2">
+  <h2 class="text-sm font-medium">Submited</h2>
+  <span class="text-xs opacity-60">24h</span>
+  </header>
+  <div class="text-2xl font-bold">15</div>
+  </section>
+  </div>
+
+  <!-- Additional content placeholder -->
+  <div class="card p-4 shadow rounded bg-blue-500 text-white">
+      <h2 class="text-lg font-semibold mb-4">Dashboard Overview</h2>
+      <!-- backdrop -->
+      <div class="max-h-screen mb-4">
+          <div class="bg-white p-4 shadow rounded mb-6 text-black">
+    <h3 class="text-lg font-semibold mb-3">Recent Activity</h3>
+
+    <ul class="space-y-3">
+
+      <li class="flex items-start gap-3">
+        <span class="w-3 h-3 bg-green-500 rounded-full mt-1"></span>
+        <div>
+          <p class="font-medium">Omkar submitted Assignment 4</p>
+          <p class="text-xs text-gray-500">2 hours ago</p>
+        </div>
+      </li>
+
+      <li class="flex items-start gap-3">
+        <span class="w-3 h-3 bg-blue-500 rounded-full mt-1"></span>
+        <div>
+          <p class="font-medium">Neha paid her fees (₹15,000)</p>
+          <p class="text-xs text-gray-500">Today at 11:45 AM</p>
+        </div>
+      </li>
+
+      <li class="flex items-start gap-3">
+        <span class="w-3 h-3 bg-purple-500 rounded-full mt-1"></span>
+        <div>
+          <p class="font-medium">Abhishek logged in</p>
+          <p class="text-xs text-gray-500">Today at 10:22 AM</p>
+        </div>
+      </li>
+
+      <li class="flex items-start gap-3">
+        <span class="w-3 h-3 bg-yellow-500 rounded-full mt-1"></span>
+        <div>
+          <p class="font-medium">New user added: Ayush</p>
+          <p class="text-xs text-gray-500">Yesterday</p>
+        </div>
+      </li>
+
+      <li class="flex items-start gap-3">
+        <span class="w-3 h-3 bg-red-500 rounded-full mt-1"></span>
+        <div>
+          <p class="font-medium">Server restarted automatically</p>
+          <p class="text-xs text-gray-500">2 days ago</p>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+      <!-- Main content -->
+      <div class="max-w-6xl mx-auto">
+          <h2 class="text-2xl font-bold mb-4">Reports</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="card p-4 shadow rounded bg-purple-300 text-black  hover:bg-green-200">
+                  <h3 class="text-lg font-semibold mb-2">Fees Report</h3>
+                  <p class="text-sm">Total Fees: ₹3,60,000</p>
+              </div>
+              <div class="card p-4 shadow rounded bg-purple-300 text-black  hover:bg-green-200">
+                  <h3 class="text-lg font-semibold mb-2">User Activity</h3>
+                  <p class="text-sm">Active users: 89%.</p>
+              </div>
+          </div>
+      </div>
+  </main>
+
+  <!-- Start of Footer -->
+  <section class="bg-blue-900 text-white p-1 text-center font-black">
+    <h4 class="text-2xl font-semibold mb-2">About Us</h4>
+    <h5 class="text-lg mb-6">To Know More Visit Here 👇</h5>
+    <div class="flex justify-center space-x-6 text-2xl mb-6">
+      <a href="https://www.facebook.com/kesshroffcollegeofficial" target="_blank" class="hover:text-red-400 transition">
+        <i class="fa fa-facebook">F</i>
+      </a>
+      <a href="https://www.instagram.com/kesshroffcollege?igsh=djNkZ3pxbWU2OTZt" target="_blank" class="hover:text-red-400 transition">
+        <i class="fa fa-instagram">I</i>
+      </a>
+      <a href="https://www.linkedin.com/in/kesshroffcollege/" target="_blank" class="hover:text-red-300 transition">
+        <i class="fa fa-linkedin">L</i>
+      </a>
+      <a href="https://kessc.edu.in/" target="_blank" class="hover:text-red-500 transition">
+        <i class="fa fa-youtube">W</i>
+      </a>
+    </div>
+  </section>
+  <!-- End of Footer -->
+</div>
+</body>
+<script>
+  // Sidebar toggle functionality
+const sidebar = document.getElementById('sidebar');
+const backdrop = document.getElementById('backdrop');
+const sidebarToggle = document.getElementById('sidebarToggle');
+const closeSidebar = document.getElementById('closeSidebar');
+
+function toggleSidebar() {
+  const isOpen = !sidebar.classList.contains('-translate-x-full');
+  if (isOpen) {
+    sidebar.classList.add('-translate-x-full');
+    backdrop.classList.add('hidden');
+  } else {
+    sidebar.classList.remove('-translate-x-full');
+    backdrop.classList.remove('hidden');
+  }
+}
+
+sidebarToggle.addEventListener('click', toggleSidebar);
+closeSidebar.addEventListener('click', toggleSidebar);
+backdrop.addEventListener('click', toggleSidebar);
+</script>
+</htm>
